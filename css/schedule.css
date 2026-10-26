@@ -1,0 +1,409 @@
+/* Schedule page – Nyendo Campus (and shared term tabs layout) */
+
+:root {
+  --primary: #1a5276;
+  --accent: #2980b9;
+  --light: #f4f7f9;
+  --border: #d5e1ea;
+  --text: #2c3e50;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: #eef2f5;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 24px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+  overflow: hidden;
+  display: flex;
+  min-height: 720px;
+}
+
+/* Left tabs */
+.tabs {
+  width: 200px;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.tabs h1 {
+  font-size: 1rem;
+  padding: 20px 16px 12px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  border-bottom: 1px solid rgba(255, 255, 255, .15);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, .75);
+  text-align: left;
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  border-left: 4px solid transparent;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, .08);
+  color: #fff;
+}
+
+.tab-btn.active {
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  border-left-color: #5dade2;
+  font-weight: 600;
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  padding: 28px 32px 40px;
+  overflow-y: auto;
+}
+
+.content h2 {
+  font-size: 1.45rem;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.content .subtitle {
+  color: #5d6d7e;
+  font-size: .95rem;
+  margin-bottom: 24px;
+}
+
+.term-panel {
+  display: none;
+}
+
+.term-panel.active {
+  display: block;
+}
+
+/* Key dates grid */
+.key-dates {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.card {
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.card h3 {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.card p {
+  font-size: .95rem;
+  font-weight: 500;
+}
+
+.card .note {
+  font-size: .82rem;
+  color: #7f8c8d;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+/* Highlight cards */
+.card.highlight-green {
+  grid-column: 1 / -1;
+  background: #eafaf1;
+  border-color: #a9dfbf;
+}
+
+.card.highlight-green h3 {
+  color: #1e8449;
+}
+
+.card.highlight-orange {
+  background: #fdebd0;
+  border-color: #f5b041;
+}
+
+.card.highlight-orange h3 {
+  color: #b9770e;
+}
+
+.card.highlight-red {
+  grid-column: 1 / -1;
+  background: #fadbd8;
+  border-color: #e74c3c;
+}
+
+.card.highlight-red h3 {
+  color: #922b21;
+}
+
+/* Public holidays */
+.holidays {
+  background: #fef9e7;
+  border: 1px solid #f9e79f;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 28px;
+}
+
+.holidays h3 {
+  font-size: .9rem;
+  color: #9a7d0a;
+  margin-bottom: 8px;
+}
+
+.holidays ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-size: .9rem;
+}
+
+.holidays li::before {
+  content: "• ";
+  color: #d4ac0d;
+}
+
+/* Daily timetable */
+.daily h3 {
+  font-size: 1.05rem;
+  color: var(--primary);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  padding: 9px 12px;
+  text-align: left;
+}
+
+th {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background: #f8fbfd;
+}
+
+td:first-child {
+  font-weight: 500;
+  white-space: nowrap;
+  width: 130px;
+}
+
+.special {
+  background: #eaf2f8 !important;
+  font-style: italic;
+}
+
+footer {
+  margin-top: 28px;
+  font-size: .8rem;
+  color: #7f8c8d;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+/* ========== Responsive: tablet ========== */
+@media (max-width: 900px) {
+  .page {
+    flex-direction: column;
+    min-height: auto;
+    margin: 12px;
+    border-radius: 10px;
+  }
+
+  .tabs {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .tabs h1 {
+    width: 100%;
+    padding: 14px 16px 10px;
+    font-size: .95rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .15);
+  }
+
+  .tab-btn {
+    flex: 1;
+    text-align: center;
+    padding: 12px 10px;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    font-size: .9rem;
+  }
+
+  .tab-btn.active {
+    border-left-color: transparent;
+    border-bottom-color: #5dade2;
+  }
+
+  .content {
+    padding: 20px 18px 28px;
+  }
+
+  .content h2 {
+    font-size: 1.25rem;
+  }
+
+  .key-dates {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+}
+
+/* ========== Responsive: mobile ========== */
+@media (max-width: 600px) {
+  .page {
+    margin: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+  }
+
+  .tabs h1 {
+    font-size: .85rem;
+    padding: 12px 12px 8px;
+  }
+
+  .tab-btn {
+    padding: 10px 6px;
+    font-size: .8rem;
+  }
+
+  .content {
+    padding: 16px 12px 24px;
+  }
+
+  .content h2 {
+    font-size: 1.15rem;
+  }
+
+  .content .subtitle {
+    font-size: .85rem;
+    margin-bottom: 16px;
+  }
+
+  .key-dates {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .card {
+    padding: 12px 14px;
+  }
+
+  .card h3 {
+    font-size: .72rem;
+  }
+
+  .card p {
+    font-size: .9rem;
+  }
+
+  .holidays {
+    padding: 12px 14px;
+    margin-bottom: 20px;
+  }
+
+  .holidays h3 {
+    font-size: .85rem;
+  }
+
+  .holidays ul {
+    flex-direction: column;
+    gap: 6px;
+    font-size: .85rem;
+  }
+
+  .daily h3 {
+    font-size: .95rem;
+  }
+
+  /* Make timetable scroll horizontally on narrow screens */
+  .daily {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    min-width: 480px;
+    font-size: .8rem;
+  }
+
+  th,
+  td {
+    padding: 7px 8px;
+  }
+
+  td:first-child {
+    width: 110px;
+  }
+
+  footer {
+    font-size: .75rem;
+    padding-top: 10px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .tab-btn {
+    font-size: .75rem;
+    padding: 8px 4px;
+  }
+
+  .content h2 {
+    font-size: 1.05rem;
+  }
+
+  table {
+    min-width: 420px;
+    font-size: .75rem;
+  }
+}

@@ -1,0 +1,681 @@
+:root {
+  --school-blue: #e5e5eb;
+  --school-blue-dark: #b2b2b7;
+  --school-accent: #F4B400;
+  --school-text: #1A22D6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Initial header */
+.main-header {
+  background: var(--school-blue);
+  color: var(--school-text);
+  padding: 30px 5%;
+  border-bottom: 4px solid var(--school-accent);
+  position: relative;
+  z-index: 1000;
+  margin-bottom: 0;
+  transition: padding 0.1s ease, box-shadow 0.1s ease;
+}
+
+.main-header .container {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.school-badge {
+  width: 150px;
+  height:200px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.school-info h1 {
+  margin: 0;
+  font-size: 2.8rem;
+  letter-spacing: 1.4px;
+}
+
+.h3{
+  margin: 8px 0 0;
+  color: #4d4da4;
+}
+
+/* Compact header after scrolling */
+.main-header.scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px 5%;
+  background: var(--school-blue);
+  border-bottom: 3px solid var(--school-accent);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.main-header.scrolled .container {
+  flex-direction: row;
+  text-align: left;
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+.main-header.scrolled .school-badge {
+  width: var(--compact-logo-size, 100px);
+  height: var(--compact-logo-size, 150px);
+}
+
+.main-header.scrolled .school-info h1 {
+  font-size: var(--compact-title-size, 1.9rem);
+}
+
+.main-header.scrolled .tagline {
+  display: none;
+}
+
+/* Prevent content jumping when header becomes fixed */
+body.has-scrolled-header {
+  padding-top: var(--header-height, 0px);
+}
+
+@media (max-width: 600px) {
+  .school-info h1 {
+    font-size: 1.2rem;
+  }
+  .school-info h3{
+    font-size: 0.7rem;
+  }
+
+  .main-header.scrolled .school-badge {
+    width: 50px;
+    height: 80px;
+  }
+
+  .main-header.scrolled .school-info h1 {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Campus selector section */
+.campus-selector {
+  display: grid;
+  grid-template-columns: 105px minmax(0, 1fr) 105px;
+  gap: 14px;
+  align-items: stretch;
+  width: 100%;
+  flex: 1 0 auto;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.campus-selector h2 {
+  display: block;
+  text-align: center;
+  margin: 0 0 35px;
+  font-size: 2rem;
+  color: #17365d;
+}
+
+/* Three campus cards */
+.campus-cards {
+  display: flex;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .campus-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .campus-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.campus-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 20px;
+  position: relative;
+  padding: 30px 20px;
+  min-height: 230px;
+  background: #fff;
+  color: #222;
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campus-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.campus-code {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin: 0 auto 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #17365d;
+}
+
+.campus-card h3 {
+  margin: 15px 0 10px;
+}
+
+.campus-card p {
+  line-height: 1.6;
+}
+
+.campus-card .btn {
+  display: inline-block;
+  margin-top: auto;
+  padding: 10px 16px;
+  background: #17365d;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.campus-center {
+  min-width: 0;
+  align-self: center;
+}
+
+.campus-center .container {
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+
+
+.side-gallery {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  align-self: stretch;
+  background: #f2f2ff;
+  border: 2px solid #ededff;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.gallery-track {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 5px;
+  animation: gallery-up 20s linear infinite;
+  will-change: transform;
+}
+
+.side-gallery-right .gallery-track {
+  animation-name: gallery-down;
+}
+
+.gallery-track img {
+  display: block;
+  width: 100%;
+  height: 85px;
+  flex: 0 0 85px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+/* Move one complete repeated sequence */
+@keyframes gallery-up {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes gallery-down {
+  from {
+    transform: translateY(-50%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .gallery-track img {
+    height: 65px;
+    flex-basis: 65px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-track img {
+    height: 48px;
+    flex-basis: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track {
+    animation: none;
+  }
+}
+
+.gallery-track {
+  gap: 8px;
+  padding: 5px;
+}
+
+.gallery-track img {
+  height: 70px;
+  flex-basis: 70px;
+}
+
+.campus-center .campus-cards {
+  grid-template-columns: 1fr;
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .campus-selector {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+    gap: 5px;
+    padding: 5px 4px;
+  }
+
+  .side-gallery {
+    border-radius: 7px;
+  }
+
+  .gallery-track {
+    gap: 6px;
+    padding: 3px;
+  }
+
+  .gallery-track img {
+    height: 52px;
+    flex-basis: 52px;
+    padding: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-track {
+    animation: none;
+  }
+}
+
+.gallery-track {
+  animation-play-state: paused;
+  animation: gallery-up 190s linear infinite;
+}
+
+.gallery-track.gallery-ready {
+  animation-play-state: running;
+}
+
+/* Footer */
+footer {
+  padding: 20px;
+  background: #0b1828;
+  color: #fff;
+  text-align: center;
+}
+
+
+
+.campus-code {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* Campus page header */
+.campus-header {
+  background: var(--school-blue, #0a0a40);
+  color: #fff;
+  padding: 25px 5%;
+  border-bottom: 4px solid var(--school-accent, #F4B400);
+  position: relative;
+  z-index: 1000;
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campus-header .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.campus-header h1 {
+  margin: 0 0 15px;
+  font-size: 2rem;
+  transition: font-size 0.3s ease;
+}
+
+/* Compact campus header on scroll */
+.campus-header.scrolled {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px 5%;
+  border-bottom-width: 3px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.campus-header.scrolled .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.campus-header.scrolled h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+
+
+/* Nye Campus branding */
+
+.campus-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  /* Very close badge-to-text spacing */
+  width: 100%;
+}
+
+.campus-badge {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.pha {
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: left;
+  line-height: 1.2;
+  min-width: 0;
+  color: #1A22D6;
+}
+
+
+.campus-brand h1 {
+  margin: 0 0 15px;
+}
+
+/* Compact badge when scrolling */
+.campus-header.scrolled .campus-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.campus-header.scrolled .campus-badge {
+  width: 45px;
+  height: 45px;
+}
+
+.campus-header.scrolled .campus-brand h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .campus-badge {
+    width: 55px;
+    height: 55px;
+  }
+
+  .campus-header.scrolled .campus-badge {
+    width: 35px;
+    height: 35px;
+  }
+
+  .campus-header.scrolled .campus-brand h1 {
+    font-size: 1rem;
+  }
+}
+
+/* =====================================
+   GOOD FOUNDATION SCHOOLS NAVIGATION
+===================================== */
+
+.campus-nav {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+  margin-top: 15px;
+  padding: 8px;
+  background: #1515A8;
+  border: 1px solid rgba(244, 180, 0, 0.4);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Individual navigation tabs */
+.campus-nav a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 44px;
+  padding: 10px 5px;
+  overflow: hidden;
+
+  color: #FFFFFF;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Gold underline */
+.campus-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: #F4B400;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+
+/* Hover effect */
+.campus-nav a:hover {
+  color: #1515A8;
+  background: #F4B400;
+  border-color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.campus-nav a:hover::after {
+  width: 65%;
+  background: #1515A8;
+}
+
+/* Current page */
+.campus-nav a.active {
+  color: #1515A8;
+  background: #FFFFFF;
+  border-color: #F4B400;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.campus-nav a.active::after {
+  width: 65%;
+}
+
+/* Keyboard accessibility */
+.campus-nav a:focus-visible {
+  outline: 3px solid #F4B400;
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+/* Compact scrolling header */
+.campus-header.scrolled .campus-nav {
+  margin-top: 0;
+  padding: 5px;
+  gap: 5px;
+  border-radius: 9px;
+}
+
+.campus-header.scrolled .campus-nav a {
+  min-height: 38px;
+  padding: 7px 3px;
+  font-size: 0.85rem;
+}
+
+/* Tablets and smaller screens */
+@media (max-width: 768px) {
+  .campus-nav {
+    gap: 5px;
+    padding: 6px;
+  }
+
+  .campus-nav a {
+    font-size: 14px;
+    padding: 10px 4px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .campus-nav {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .campus-nav a {
+    min-height: 42px;
+    padding: 8px 2px;
+    font-size: 0.55rem;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .campus-header.scrolled .campus-nav {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .campus-header.scrolled .campus-nav a {
+    min-height: 38px;
+    padding: 6px 2px;
+    font-size: 0.78rem;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+  .campus-nav a,
+  .campus-nav a::after {
+    transition: none;
+  }
+}
+
+
+.back-link {
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background-color: #242451;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  border: 2px solid #29220f;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: #1f1807;
+  color: #dadadb;
+  border-color: #8080f7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-link:focus-visible {
+  outline: 3px solid #F4B400;
+  outline-offset: 3px;
+}

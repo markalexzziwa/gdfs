@@ -1,0 +1,16 @@
+{
+  "schoolName": "GOOD FOUNDATION SCHOOLS",
+  "tagline": "Religious • Academics • Discpline",
+  "badge": "images/gfsbadge.png",
+  "colors": {
+    "primary": "#2020D8",
+    "primaryDark": "#1515A8",
+    "accent": "#F4B400",
+    "text": "#FFFFFF"
+  },
+  "header": {
+    "scrollThreshold": 80,
+    "compactLogoSize": 48,
+    "compactTitleSize": "1.25rem"
+  }
+}
